@@ -1,0 +1,327 @@
+@import 'fonts';
+@import 'variables';
+@import 'mixins';
+@import 'templateSelectors';
+@import 'reset';
+@import 'blocksForBEM';
+
+
+html, body {
+  height: 100%;
+  line-height: 1;
+  font-family: PTSans;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+
+// Компонент HEADER ---------------------------------------------------------------------------
+@import 'components/header';
+
+// Настройки расположения контента ------------------------------------------------------------
+._container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page {
+  // flex: 1 1 auto;
+  display: grid;
+  grid-template-rows: 3fr 1fr 3fr;
+  grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+  grid-template-areas:
+    "slider-arrows healthy thirsty thirsty"
+    "slider-arrows healthy slider-dots orange"
+    "freshy healthy slider-dots orange";
+  // grid-template:
+  //   "slider-arrows healthy thirsty thirsty" 3fr 
+  //   "slider-arrows healthy slider-dots orange" 1fr 
+  //   "freshy healthy slider-dots orange" 3fr
+  //   / 2fr 1fr 1.5fr 1.5fr;
+}
+
+// Компонент SLIDER-ARROWS ---------------------------------------------------------------------------
+.slider-arrows {
+  grid-area: slider-arrows;
+  position: relative;
+
+  &__items-wrapper {
+    width: 100%;
+    height: 100%;
+
+    filter: brightness(80%);
+
+    display: flex;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    transform: translate(0, -50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__arrow {
+    color: #fff;
+    font-size: 30px;
+    border: 2px solid #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 0.2s ease 0s;
+  }
+
+  &__arrow:hover {
+    opacity: 0.8;
+  }
+
+  &__arrow:active {
+    opacity: 0.6;
+  }
+
+  &__arrow--left {}
+  &__arrow--right {}
+}
+
+// Компонент SLIDER-DOTS ---------------------------------------------------------------------------
+.slider-dots {
+  grid-area: slider-dots;
+  position: relative;
+
+  &__items-wrapper {
+    width: 100%;
+    height: 100%;
+
+    filter: brightness(80%);
+
+    display: flex;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__btn-wrapper {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    transform: translate(0, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+  }
+
+  &__nav-item {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+
+    transition: all 0.2s ease 0s;
+  }
+
+  &__nav-item:hover {
+    opacity: 0.8;
+  }
+
+  &__nav-item:active {
+    opacity: 0.6;
+  }
+
+  &__nav-item--active {
+    background-color: transparent;
+    border: 1px solid #fff;
+  }
+}
+
+// Компонент FRESHY ---------------------------------------------------------------------------
+.freshy {
+  grid-area: freshy;
+  background-color: #BEE163;
+}
+
+// Компонент HEALTHY ---------------------------------------------------------------------------
+.healthy {
+  grid-area: healthy;
+  background-color: #FF4948;
+  padding-bottom: 85px;
+}
+
+// Компонент THIRSTY ---------------------------------------------------------------------------
+.thirsty {
+  grid-area: thirsty;
+  background-color: #FFBA4A;
+
+  .common__desc {
+    max-width: 200px;
+  }
+}
+
+// Компонент ORANGE ---------------------------------------------------------------------------
+.orange {
+  grid-area: orange;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(60%)
+  }
+  &__btn-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    transition: all 0.2s ease 0s;
+  }
+
+  &__arrow:hover {
+    opacity: 0.8;
+  }
+  &__arrow:active {
+    opacity: 0.6;
+  }
+}
+
+.slider-arrows, .slider-dots, .orange {
+  height: 400px;
+}
+
+.slider-arrows__item, .slider-dots__item {
+  animation: fade 0.5s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+// wrapper-down
+.wrapper-down {
+  display: grid;
+  grid-template: "footer sidebar" 1fr / 4.5fr 1.5fr;
+}
+
+
+// Компонент SIDEBAR ---------------------------------------------------------------------------
+.sidebar {
+  grid-area: sidebar;
+  background-color: #00C1B9;
+}
+
+
+@import 'components/footer';
+
+
+// Адаптация
+@media (max-width: 1200px) {
+  .page {
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+    grid-template-areas:
+      "freshy freshy freshy healthy"
+      "slider-arrows slider-arrows slider-arrows healthy"
+      "thirsty thirsty thirsty thirsty"
+      "slider-dots slider-dots orange orange"
+    ;
+  }
+
+  .slider-arrows, .slider-dots, .orange {
+    height: 300px;
+  }
+
+  .wrapper-down {
+    // grid-template: "footer sidebar" 1fr / 4.5fr 1.5fr;
+    grid-template:
+      "sidebar" auto
+      "footer" auto / auto
+    ;
+  }
+
+  .sidebar {
+    padding-left: 130px;
+    .common__desc {
+      max-width: 200px;
+    }
+    .title {
+      width: 100px;
+    }
+  }
+}
+
+
+@media (max-width: 600px) {
+  .page {
+    grid-template-columns: 1fr;
+    grid-template-areas: "healthy""slider-arrows""freshy""slider-dots""thirsty""orange"
+  }
+
+  .healthy {
+    padding-bottom: 30px;
+  }
+
+  .thirsty .common__desc, .sidebar .common__desc {
+    max-width: unset;
+  }
+
+  .sidebar {
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    padding: 15px;
+  }
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}

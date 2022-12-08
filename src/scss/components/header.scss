@@ -1,0 +1,196 @@
+.header {
+  display: grid;
+  // grid-template-rows: max-content;
+  // grid-template-columns: 1fr 1fr 100px;
+  // grid-template-areas: 'logo nav search';
+  grid-template: '. logo nav search' max-content / 2fr 1fr 2.5fr 0.5fr;
+  align-items: center;
+  justify-items: start;
+  padding: 20px 0;
+  text-transform: uppercase;
+  overflow: hidden; // скрывает все элементы за границами шапки
+
+  &__logo {
+    font-family: SecularOne;
+    font-weight: 400;
+    font-size: 24px;
+    width: 150px;
+    line-height: 1;
+    color: #FF4747;
+    grid-area: logo;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  &__logo:hover {
+    color: #ea1e1e;
+  }
+
+  &__nav {
+    grid-area: nav;
+    transform: translate(-10px);
+    font-weight: 700;
+    ul {
+      display: flex;
+      gap: 10px;
+    }
+    a {
+      display: inline-block;
+      position: relative;
+      padding: 10px;
+      transition: all 0.3s ease 0s;
+    }
+    a:hover {
+      color: #01BCB5;
+    }
+    a:active {
+      color: #01A59E;
+    }
+    a::after {
+      position: absolute;
+      left: 10px;
+      bottom: -200%;
+      content: '';
+      display: block;
+      width: 80%;
+      height: 100%;
+      background-color: #01BCB5;
+      transition: bottom 0.5s ease 0s, background-color 0.3s ease 0s;
+    }
+    a:hover::after {
+      bottom: -90%;
+    }
+    a:active::after {
+      background-color: #01A59E;
+    }
+  }
+
+  &__search {
+    grid-area: search;
+  }
+  &__search-icon {
+    transition: all 0.3s ease 0s;
+  }
+  &__search-icon:hover {
+    fill: #01BCB5;
+  }
+  &__search-icon:active {
+    fill: #01A59E;
+  }
+}
+
+// Бургер меню
+.menu-icon {
+  display: none;
+  width: 30px;
+  height: 30px;
+  position: relative;
+}
+
+.menu-icon__line, .menu-icon::after, .menu-icon::before {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+}
+
+.menu-icon::after, .menu-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.menu-icon::before {
+  top: 0;
+  transition: transform 0.3s, top 0.3s 0.3s;
+}
+
+.menu-icon::after {
+  bottom: 0;
+  transition: transform 0.3s, bottom 0.3s 0.3s;
+}
+
+.menu-icon--active .menu-icon__line {
+  display: none;
+}
+.menu-icon--active::before {
+  transform: translateY(-50%) rotate(45deg);
+  top: 50%;
+  transition: top 0.3s, transform 0.3s 0.3s;
+}
+.menu-icon--active::after {
+  transform: translateY(50%) rotate(-45deg);
+  bottom: 50%;
+  transition: bottom 0.3s, transform 0.3s 0.3s;
+}
+
+
+
+
+// Адаптив
+@media (max-width: 1200px) {
+  .header {
+    grid-template-columns: repeat(3, max-content);
+    grid-template-areas: "logo nav search";
+    justify-content: space-between;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    grid-template-columns: repeat(2, max-content);
+    grid-template-areas: "logo menu-icon";
+    &__nav {
+      display: none;
+    }
+    &__search {
+      display: none;
+    }
+
+
+  }
+
+  .menu-icon {
+    display: block;
+    grid-area: menu-icon;
+    justify-self: end;
+  }
+
+  .header--mobile {
+    min-height: 100vh;
+    grid-template:
+      "logo menu-icon" max-content
+      "nav nav" max-content
+      "search search";
+    align-content: space-between;
+    justify-items: center;
+  }
+
+  .header--mobile .header__search, .header--mobile .header__nav {
+    display: block;
+  }
+
+  .header__nav {
+    transform: translate(0px);
+    ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    a::after {
+      display: none;
+    }
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+}
+
+
+
+@media (max-width: 350px) {
+  .header {
+    padding: 15px;
+  }
+}

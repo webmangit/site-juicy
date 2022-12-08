@@ -1,0 +1,140 @@
+.footer {
+  grid-area: footer;
+  background-color: #2F2F2F;
+  color: #fff;
+  padding-top: 80px;
+
+  display: grid;
+  // grid-template-columns: 1fr 1fr 1.5fr 1fr;
+  // grid-template-rows: max-content 100px;
+  // grid-template-areas:
+  //   ". socials form logo"
+  //   ". . . copy";
+  grid-template:
+    ". socials form logo" max-content
+    ". . . copy" 100px / 1fr 1fr 1.5fr 1fr;
+
+  align-items: end;
+  align-content: center;
+  &__logo {
+    grid-area: logo;
+  }
+}
+
+.socials {
+  grid-area: socials;
+  display: flex;
+  gap: 10px;
+  &__link {
+    border: 1px solid #fff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease 0s;
+  }
+  &__link:hover {
+    opacity: 0.8;
+  }
+  &__link:active {
+    opacity: 0.6;
+  }
+  &__icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.form {
+  grid-area: form;
+  text-transform: uppercase;
+  &__title {
+    font-size: 18px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+  }
+
+  &__row {
+    display: flex;
+  }
+
+  &__input {
+    text-transform: uppercase;
+    padding: 10px 15px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease 0s;
+  }
+
+  &__input:focus {
+    background-color: rgb(255, 255, 255);
+  }
+
+  &__submit-btn {
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #00C1B9;
+    text-transform: uppercase;
+    transition: all 0.2s ease 0s;
+  }
+  &__submit-btn:hover {
+    background-color: #01BCB5;
+  }
+  &__submit-btn:active {
+    background-color: #01A59E;
+  }
+}
+
+.logo-img {
+  fill: #6a6a6a;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+  justify-self: center;
+}
+
+.logo-img:hover {
+  fill: #00C1B9;
+}
+.logo-img:active {
+  fill: #01A59E;
+}
+
+.copy {
+  grid-area: copy;
+  color: #6a6a6a;
+  align-self: center;
+  justify-self: center;
+}
+
+
+// Адаптация
+@media (max-width: 1300px) {
+  .footer {
+    grid-template:
+      "socials form logo" max-content
+      ". . copy" 100px / 1fr 1.5fr 1fr;
+
+    padding-left: 3%;
+  }
+}
+
+@media (max-width: 760px) {
+  .footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "socials""form""logo""copy";
+    gap: 30px;
+    padding: 40px 20px;
+
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 350px) {
+  .footer {
+    padding: 40px 15px;
+  }
+}

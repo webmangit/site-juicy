@@ -1,0 +1,103 @@
+.btn {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 2px solid #fff;
+  padding: 10px 15px;
+  font-size: 16px;
+  transition: all 0.2s ease 0s;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.btn:active {
+  opacity: 0.6;
+}
+
+.btn--rounded {
+  border-radius: 25px;
+  font-size: 14px;
+  padding: 8px 15px;
+  margin-top: 30px;
+}
+
+.common {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 30px;
+  color: #fff;
+
+  &__desc {
+    hyphens: auto;
+    max-width: 60%;
+  }
+}
+
+.common--col-rev {
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+}
+
+.common--col-rev .common__desc {
+  max-width: 140px;
+}
+
+.common--rov-rev {
+  flex-direction: row-reverse;
+}
+
+.common--rov-rev .common__desc {
+  text-align: right;
+}
+
+.title {
+  font-family: FiraSansCondensed;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+  text-transform: uppercase;
+  width: 140px;
+
+  span {
+    display: block; // иначе не будет работать псевдоэлемент ::first-line
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 2px
+  }
+  span::first-line {
+    font-weight: 900;
+  }
+}
+
+
+// Адаптив
+@media (max-width: 1200px) {
+  .common--rov-rev {
+    padding-right: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .common--col-rev {
+    flex-direction: row-reverse;
+  }
+
+  .common--col-rev .common__desc, .common__desc {
+    max-width: unset;
+  }
+
+  .common--rov-rev {
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 350px) {
+  .common {
+    padding: 15px;
+    gap: 15px;
+  }
+}

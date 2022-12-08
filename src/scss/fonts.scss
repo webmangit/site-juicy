@@ -1,0 +1,45 @@
+// Для заголовков
+@font-face {
+  font-family: FiraSansCondensed;
+  font-display: swap;
+  src: url("../fonts/FiraSansCondensed-Black.woff2") format("woff2"),
+    url("../fonts/FiraSansCondensed-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: FiraSansCondensed;
+  font-display: swap;
+  src: url("../fonts/FiraSansCondensed-Light.woff2") format("woff2"),
+    url("../fonts/FiraSansCondensed-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: FiraSansCondensed;
+  font-display: swap;
+  src: url("../fonts/FiraSansCondensed-Regular.woff2") format("woff2"),
+    url("../fonts/FiraSansCondensed-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+//  Для обычного текста
+@font-face {
+  font-family: PTSans;
+  font-display: swap;
+  src: url("../fonts/PTSans-Regular.woff2") format("woff2"),
+    url("../fonts/PTSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+// Для логотипа
+@font-face {
+  font-family: SecularOne;
+  font-display: swap;
+  src: url("../fonts/SecularOne-Regular.woff2") format("woff2"),
+    url("../fonts/SecularOne-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
